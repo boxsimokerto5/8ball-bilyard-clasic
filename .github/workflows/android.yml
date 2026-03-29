@@ -31,13 +31,23 @@ jobs:
         mkdir -p android/app
         keytool -genkey -v -keystore android/app/release.keystore -alias billiards_alias -keyalg RSA -keysize 2048 -validity 10000 -storepass password123 -keypass password123 -dname "CN=Billiards, OU=Gaming, O=BilliardsApp, L=Jakarta, S=Jakarta, C=ID"
 
-    - name: Build and Sign APK & AAB
+    - name: Build and Sign APK
       run: |
         cd android
         # Force create wrapper to ensure binary files exist
         gradle wrapper
         chmod +x gradlew
-        ./gradlew clean assembleRelease bundleRelease \
+        ./gradlew clean assembleRelease \
+          -Pandroid.injected.signing.store.file=app/release.keystore \
+          -Pandroid.injected.signing.store.password=password123 \
+          -Pandroid.injected.signing.key.alias=billiards_alias \
+          -Pandroid.injected.signing.key.password=password123
+
+    - name: Build and Sign AAB
+      run: |
+        cd android
+        chmod +x gradlew
+        ./gradlew bundleRelease \
           -Pandroid.injected.signing.store.file=app/release.keystore \
           -Pandroid.injected.signing.store.password=password123 \
           -Pandroid.injected.signing.key.alias=billiards_alias \
