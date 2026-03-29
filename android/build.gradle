@@ -10,7 +10,10 @@ buildscript {
 }
 
 allprojects {
-    // Repositories are now managed in settings.gradle
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
 task clean(type: Delete) {

@@ -20,9 +20,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            
-            // Menggunakan properti yang disuntikkan dari GitHub Actions
-            signingConfig signingConfigs.debug // Default ke debug jika tidak ada, tapi akan dioverride oleh CLI
         }
     }
     
