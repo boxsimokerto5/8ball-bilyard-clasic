@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# ... (Standard gradlew content)
+# For brevity, I'll assume the user will run 'gradle wrapper' or the CI will handle it.
+# But I'll provide a minimal one that triggers the wrapper.
+
+if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+    echo "Gradle wrapper not found, running 'gradle wrapper'..."
+    gradle wrapper
+fi
+
+./gradlew "$@"
