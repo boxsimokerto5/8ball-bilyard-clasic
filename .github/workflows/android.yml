@@ -34,12 +34,10 @@ jobs:
     - name: Build and Sign APK & AAB
       run: |
         cd android
-        # Jika gradlew tidak ada, buat wrapper baru menggunakan gradle yang terpasang di runner
-        if [ ! -f gradlew ]; then
-          gradle wrapper
-        fi
+        # Paksa pembuatan wrapper untuk memastikan file .jar binary ada
+        gradle wrapper
         chmod +x gradlew
-        ./gradlew assembleRelease bundleRelease \
+        ./gradlew clean assembleRelease bundleRelease \
           -Pandroid.injected.signing.store.file=app/release.keystore \
           -Pandroid.injected.signing.store.password=password123 \
           -Pandroid.injected.signing.key.alias=billiards_alias \
