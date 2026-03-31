@@ -3,6 +3,7 @@ package com.billiards.classic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -38,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
         ball8.startAnimation(rollIn);
 
         // Transition to Main Menu after 3.5 seconds
-        new Handler().postDelayed(() -> {
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, MainMenuActivity.class));
             finish();
         }, 3500);

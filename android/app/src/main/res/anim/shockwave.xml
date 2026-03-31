@@ -11,8 +11,8 @@
         android:repeatCount="1"
         android:repeatMode="reverse" />
     <translate
-        android:fromXDelta="-5"
-        android:toXDelta="5"
+        android:fromXDelta="-5dp"
+        android:toXDelta="5dp"
         android:duration="50"
         android:repeatCount="4"
         android:repeatMode="reverse" />

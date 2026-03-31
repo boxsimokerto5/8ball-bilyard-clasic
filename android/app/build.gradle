@@ -39,13 +39,13 @@ android {
     
     bundle {
         language {
-            enableSplit = true
+            enableSplit = false
         }
         density {
-            enableSplit = true
+            enableSplit = false
         }
         abi {
-            enableSplit = true
+            enableSplit = false
         }
     }
     
