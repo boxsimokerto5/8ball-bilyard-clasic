@@ -4,7 +4,7 @@
         android:fromYDelta="-20dp"
         android:toYDelta="20dp"
         android:duration="2500"
-        android:repeatCount="infinite"
+        android:repeatCount="-1"
         android:repeatMode="reverse" />
     <rotate
         android:fromDegrees="-5"
