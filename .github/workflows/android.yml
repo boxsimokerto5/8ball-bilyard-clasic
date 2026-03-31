@@ -34,8 +34,8 @@ jobs:
     - name: Build and Sign APK
       run: |
         cd android
-        # Force create wrapper to ensure binary files exist
-        gradle wrapper
+        # Force create wrapper with specific version to ensure compatibility
+        gradle wrapper --gradle-version 8.2
         chmod +x gradlew
         ./gradlew clean assembleRelease --warning-mode all --stacktrace \
           -PRELEASE_STORE_FILE=release.keystore \
@@ -46,8 +46,8 @@ jobs:
     - name: Build and Sign AAB
       run: |
         cd android
-        # Force create wrapper to ensure binary files exist
-        gradle wrapper
+        # Force create wrapper with specific version to ensure compatibility
+        gradle wrapper --gradle-version 8.2
         chmod +x gradlew
         ./gradlew bundleRelease --warning-mode all --stacktrace \
           -PRELEASE_STORE_FILE=release.keystore \
