@@ -37,21 +37,21 @@ jobs:
         # Force create wrapper to ensure binary files exist
         gradle wrapper
         chmod +x gradlew
-        ./gradlew clean assembleRelease \
-          -Pandroid.injected.signing.store.file=app/release.keystore \
-          -Pandroid.injected.signing.store.password=password123 \
-          -Pandroid.injected.signing.key.alias=billiards_alias \
-          -Pandroid.injected.signing.key.password=password123
+        ./gradlew clean assembleRelease --warning-mode all --stacktrace \
+          -PRELEASE_STORE_FILE=app/release.keystore \
+          -PRELEASE_STORE_PASSWORD=password123 \
+          -PRELEASE_KEY_ALIAS=billiards_alias \
+          -PRELEASE_KEY_PASSWORD=password123
 
     - name: Build and Sign AAB
       run: |
         cd android
         chmod +x gradlew
-        ./gradlew bundleRelease \
-          -Pandroid.injected.signing.store.file=app/release.keystore \
-          -Pandroid.injected.signing.store.password=password123 \
-          -Pandroid.injected.signing.key.alias=billiards_alias \
-          -Pandroid.injected.signing.key.password=password123
+        ./gradlew bundleRelease --warning-mode all --stacktrace \
+          -PRELEASE_STORE_FILE=app/release.keystore \
+          -PRELEASE_STORE_PASSWORD=password123 \
+          -PRELEASE_KEY_ALIAS=billiards_alias \
+          -PRELEASE_KEY_PASSWORD=password123
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
